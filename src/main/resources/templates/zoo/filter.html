@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Getting zoos</title>
+</head>
+<body>
+<h1>Животные</h1>
+  <div>
+      <div>
+          <div>
+              <div th:each="el : ${listAnimal}">
+                  <p th:text="${el.id}"></p>
+                  <p th:text="${el.name}"></p>
+                  <p th:text="${el.age}"></p>
+                  <p th:text="${el.description}"></p>
+                  <p th:text="${el.mass}"></p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+<a href="/zoo">Обратно к списку животных</a>
+</body>
+</html>

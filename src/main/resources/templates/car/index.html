@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Getting cars</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <div th:insert="fragments/header :: headerMain"></div>
+</head>
+<body>
+<h1 style="margin-left: 15px">Введите название марки полностью</h1>
+<form action="car/filter-direct" style="margin-left: 15px" method="get">
+    <input type="text" name="searchName" placeholder="Марка">
+    <input type="submit" value="Найти">
+</form>
+
+<h1 style="margin-left: 15px">Введите название марки (можно не полностью)</h1>
+<form action="car/filter-contains" style="margin-left: 15px" method="get">
+    <input type="text" name="searchName" placeholder="Марка">
+    <input type="submit" value="Найти">
+</form>
+
+<div style="margin-left: 15px; margin-top: 15px">
+    <div th:each="el : ${listCar}">
+        <p th:text="${el.id}"/>
+        <p th:text="${el.brand}"/>
+        <p th:text="${el.model}"/>
+        <p th:text="${el.color}"/>
+        <p th:text="${el.country}"/>
+        <p th:text="${el.weight}"/>
+        <a th:href="'/car/details/' + ${el.getId()}" class="btn btn-info" style="margin-bottom: 15px">Узнать детали</a>
+    </div>
+</div>
+<a href="/car/add" style="margin-left: 15px">Добавить автомобиль</a>
+</body>
+</html>

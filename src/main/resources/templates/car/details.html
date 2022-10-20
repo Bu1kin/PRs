@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о выбранном автомобиле</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <div th:insert="fragments/header :: headerMain"></div>
+</head>
+<body>
+    <div>
+        <div th:each="el: ${listCar}" style="padding: 5px; margin-left: 15px; margin-top: 10px">
+            <p th:text="'ID: ' + ${el.getId()}"></p>
+            <p th:text="'Марка автомобиля: ' + ${el.getBrand()}"></p>
+            <p th:text="'Модель автомобиля: ' + ${el.getModel}"></p>
+            <p th:text="'Цвет: ' + ${el.getColor()}"></p>
+            <p th:text="'Страна-производитель: ' + ${el.getCountry()}"></p>
+            <p th:text="'Вес: ' + ${el.getWeight()}"></p>
+
+            <a th:href="'/car/edit/' + ${el.getId()}" class="btn btn-primary">Редактировать</a>
+            <a th:href="'/car/del/' + ${el.getId()}" class="btn btn-danger">Удалить</a>
+        </div>
+        <br>
+        <a th:href="'/car'" class="btn btn-dark" style="margin-left: 20px">Назад</a>
+    </div>
+</body>
+</html>

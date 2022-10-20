@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Getting zoos</title>
+</head>
+<body>
+<h1>Введите кличку полностью</h1>
+<form action="zoo/filter-direct" method="get">
+    <input type="text" name="searchName" placeholder="Кличка" >
+    <input type="submit" value="Найти">
+</form>
+
+<h1>Введите кличку (можно не полностью)</h1>
+<form action="zoo/filter-contain" method="get">
+    <input type="text" name="searchName" placeholder="Кличка">
+    <input type="submit" value="Найти">
+</form>
+
+<div>
+    <div>
+        <div>
+            <div th:each="el : ${listAnimal}">
+                <p th:text="${el.id}"></p>
+                <p th:text="${el.name}"></p>
+                <p th:text="${el.age}"></p>
+                <p th:text="${el.description}"></p>
+                <p th:text="${el.mass}"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="/zoo/add">Добавить животное</a>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <div th:insert="fragments/header :: headerMain"></div>
+</head>
+<body>
+    <form th:object="${employee}" method="post" style="margin-left: 15px; margin-top: 15px">
+        <input type="text" th:field="*{surname}" name="surname" placeholder="Фамилия" style="margin-bottom: 8px"> <br>
+        <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" style="color: red; margin-bottom: 8px"></div>
+
+        <input type="text" th:field="*{name}" name="name" placeholder="Имя" style="margin-bottom: 8px"> <br>
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red; margin-bottom: 8px"></div>
+
+        <input type="text" th:field="*{middle_name}" name="middle_name" placeholder="Отчество" style="margin-bottom: 8px"> <br>
+        <div th:if="${#fields.hasErrors('middle_name')}" th:errors="*{middle_name}" style="color: red; margin-bottom: 8px"></div>
+
+        <input type="number" th:field="*{age}" name="age" placeholder="Возраст" style="margin-bottom: 8px"> <br>
+        <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" style="color: red; margin-bottom: 8px"></div>
+
+        <input type="tel" th:field="*{phone}" name="phone" placeholder="Номер телефона" style="margin-bottom: 8px"> <br>
+        <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" style="color: red; margin-bottom: 8px"></div>
+
+        <input type="submit" value="Создать"> <br>
+    </form> <br>
+    <a href="/employee" style="margin-left: 15px">Перейти к списку сотрудников</a>
+</body>
+</html>

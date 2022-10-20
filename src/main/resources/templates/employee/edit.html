@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title text="Редактирование сотрудника"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <div th:insert="fragments/header :: headerMain"></div>
+</head>
+<body>
+    <div th:each="el: ${employee}" style="padding: 10px; margin-left: 10px; margin-top: 5px">
+        <form method="post">
+            <label>
+                <input th:field="*{employee.surname}" name="surname" type="text" placeholder="Фамилия" th:value="${employee.surname}" class="form-control" style="min-width: 100px; width: 300px">
+                <div th:if="${#fields.hasErrors('employee.surname')}" th:errors="*{employee.surname}" style="color: red; margin-bottom: 8px"></div>
+
+                <input th:field="*{employee.name}" name="name" type="text" placeholder="Имя" th:value="${employee.name}" class="form-control" style="min-width: 100px; width: 300px">
+                <div th:if="${#fields.hasErrors('employee.name')}" th:errors="*{employee.name}" style="color: red; margin-bottom: 8px"></div>
+
+                <input th:field="*{employee.middle_name}"  name="middle_name" type="text" placeholder="Отчество" th:value="${employee.middle_name}" class="form-control" style="min-width: 100px; width: 300px">
+                <div th:if="${#fields.hasErrors('employee.middle_name')}" th:errors="*{employee.middle_name}" style="color: red; margin-bottom: 8px"></div>
+
+                <input th:field="*{employee.age}"  name="age" type="number" placeholder="Возраст" th:value="${employee.age}" class="form-control" style="min-width: 100px; width: 300px">
+                <div th:if="${#fields.hasErrors('employee.age')}" th:errors="*{employee.age}" style="color: red; margin-bottom: 8px"></div>
+
+                <input th:field="*{employee.phone}"  name="phone" type="tel" placeholder="Номер телефона" th:value="${employee.phone}" class="form-control" style="min-width: 100px; width: 300px">
+                <div th:if="${#fields.hasErrors('employee.phone')}" th:errors="*{employee.phone}" style="color: red; margin-bottom: 8px"></div>
+
+                <input type="submit" value="Подтвердить" class="btn btn-primary" style="margin-bottom: 5px">
+            </label>
+        </form>
+        <a th:href="'/employee/details/' + ${el.id}" class="btn btn-dark">Назад</a>
+    </div>
+</body>
+</html>

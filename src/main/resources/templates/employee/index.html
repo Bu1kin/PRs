@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Getting employees</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <div th:insert="fragments/header :: headerMain"></div>
+</head>
+<body>
+<h1 style="margin-left: 15px">Введите фамилию полностью</h1>
+<form action="employee/filter-direct" method="get" style="margin-left: 15px">
+  <input type="text" name="searchName" placeholder="Фамилия">
+  <input type="submit" value="Найти">
+</form>
+
+<h1 style="margin-left: 15px">Введите фамилию (можно не полностью)</h1>
+<form action="employee/filter-contains" method="get" style="margin-left: 15px">
+  <input type="text" name="searchName" placeholder="Фамилия">
+  <input type="submit" value="Найти">
+</form>
+
+<div style="margin-left: 15px; margin-top: 15px">
+    <div th:each="el : ${listEmployee}">
+        <p th:text="${el.id}"/>
+        <p th:text="${el.surname}"/>
+        <p th:text="${el.name}"/>
+        <p th:text="${el.middle_name}"/>
+        <p th:text="${el.age}"/>
+        <p th:text="${el.phone}" style="margin-bottom: 15px"/>
+        <a th:href="'/employee/details/' + ${el.getId()}" class="btn btn-info" style="margin-bottom: 15px">Узнать детали</a>
+    </div>
+</div>
+
+<a href="/employee/add" style="margin-left: 15px">Добавить сотрудника</a>
+</body>
+</html>

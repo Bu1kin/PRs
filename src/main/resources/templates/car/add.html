@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding car</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <div th:insert="fragments/header :: headerMain"></div>
+</head>
+<body>
+    <form th:object="${car}" method="post" style="margin-left: 15px; margin-top: 15px">
+        <input type="text" th:field="*{brand}" name="brand" placeholder="Марка" style="margin-bottom: 8px"> <br>
+        <div th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" style="color: red; margin-bottom: 8px"></div>
+
+        <input type="text" th:field="*{model}" name="car_model" placeholder="Модель" style="margin-bottom: 8px"> <br>
+        <div th:if="${#fields.hasErrors('model')}" th:errors="*{model}" style="color: red; margin-bottom: 8px"></div>
+
+        <input type="text" th:field="*{color}" name="color" placeholder="Цвет" style="margin-bottom: 8px"> <br>
+        <div th:if="${#fields.hasErrors('color')}" th:errors="*{color}" style="color: red; margin-bottom: 8px"></div>
+
+        <input type="text" th:field="*{country}" name="country" placeholder="Страна" style="margin-bottom: 8px"> <br>
+        <div th:if="${#fields.hasErrors('country')}" th:errors="*{country}" style="color: red; margin-bottom: 8px"></div>
+
+        <input type="text" th:field="*{weight}" name="weight" placeholder="Вес" style="margin-bottom: 8px"> <br>
+        <div th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}" style="color: red; margin-bottom: 8px"></div>
+
+        <input type="submit" value="Создать"> <br>
+    </form>
+    <a href="/car" style="margin-left: 15px">Перейти к списку автомобилей</a>
+</body>
+</html>

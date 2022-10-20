@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="Редактирование + ' ' + ${car.brand}"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <div th:insert="fragments/header :: headerMain"></div>
+</head>
+<body>
+    <div th:each="el: ${car}" style="padding: 10px; margin-left: 10px; margin-top: 5px">
+        <form method="post">
+            <input th:field="*{car.brand}" name="brand" type="text" placeholder="Марка" th:value="${car.brand}" class="form-control" style="min-width: 100px; width: 300px; margin-bottom: 8px">
+            <div th:if="${#fields.hasErrors('car.brand')}" th:errors="*{car.brand}" style="color: red; margin-bottom: 8px"></div>
+
+            <input th:field="*{car.model}" name="car_model" type="text" placeholder="Модель" th:value="${car.model}" class="form-control" style="min-width: 100px; width: 300px; margin-bottom: 8px">
+            <div th:if="${#fields.hasErrors('car.model')}" th:errors="*{car.model}" style="color: red; margin-bottom: 8px"></div>
+
+            <input th:field="*{car.color}"  name="color" type="text" placeholder="Цвет" th:value="${car.color}" class="form-control" style="min-width: 100px; width: 300px; margin-bottom: 8px">
+            <div th:if="${#fields.hasErrors('car.color')}" th:errors="*{car.color}" style="color: red; margin-bottom: 8px"></div>
+
+            <input th:field="*{car.country}"  name="country" type="text" placeholder="Страна" th:value="${car.country}" class="form-control" style="min-width: 100px; width: 300px; margin-bottom: 8px">
+            <div th:if="${#fields.hasErrors('car.country')}" th:errors="*{car.country}" style="color: red; margin-bottom: 8px"></div>
+
+            <input th:field="*{car.weight}"  name="weight" type="text" placeholder="Вес" th:value="${car.weight}" maxlength="10" class="form-control" style="min-width: 100px; width: 300px; margin-bottom: 8px">
+            <div th:if="${#fields.hasErrors('car.weight')}" th:errors="*{car.weight}" style="color: red; margin-bottom: 8px"></div>
+
+            <input type="submit" value="Подтвердить" class="btn btn-primary" style="margin-bottom: 5px">
+        </form>
+        <a th:href="'/car/details/' + ${el.id}" class="btn btn-dark">Назад</a>
+    </div>
+</body>
+</html>
