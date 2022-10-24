@@ -1,4 +1,5 @@
 package com.example.demo.Models;
 
-public class Passport {
+public enum Role {
+    USER;
 }

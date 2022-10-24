@@ -8,23 +8,43 @@
 </head>
 <body>
     <form th:object="${employee}" method="post" style="margin-left: 15px; margin-top: 15px">
-        <input type="text" th:field="*{surname}" name="surname" placeholder="Фамилия" style="margin-bottom: 8px"> <br>
-        <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" style="color: red; margin-bottom: 8px"></div>
+<!--        <input type="text" th:field="*{surname}" name="surname" placeholder="Фамилия" style="margin-bottom: 8px"> <br>-->
 
-        <input type="text" th:field="*{name}" name="name" placeholder="Имя" style="margin-bottom: 8px"> <br>
-        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red; margin-bottom: 8px"></div>
+        <input type="text" name="surname" placeholder="Фамилия" style="margin-bottom: 8px"> <br>
+<!--        <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" style="color: red; margin-bottom: 8px"></div>-->
 
-        <input type="text" th:field="*{middle_name}" name="middle_name" placeholder="Отчество" style="margin-bottom: 8px"> <br>
-        <div th:if="${#fields.hasErrors('middle_name')}" th:errors="*{middle_name}" style="color: red; margin-bottom: 8px"></div>
+        <input type="text" name="name" placeholder="Имя" style="margin-bottom: 8px"> <br>
+<!--        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red; margin-bottom: 8px"></div>-->
 
-        <input type="number" th:field="*{age}" name="age" placeholder="Возраст" style="margin-bottom: 8px"> <br>
-        <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" style="color: red; margin-bottom: 8px"></div>
+        <input type="text" name="middle_name" placeholder="Отчество" style="margin-bottom: 8px"> <br>
+<!--        <div th:if="${#fields.hasErrors('middle_name')}" th:errors="*{middle_name}" style="color: red; margin-bottom: 8px"></div>-->
 
-        <input type="tel" th:field="*{phone}" name="phone" placeholder="Номер телефона" style="margin-bottom: 8px"> <br>
-        <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" style="color: red; margin-bottom: 8px"></div>
+        <input type="number" name="age" placeholder="Возраст" style="margin-bottom: 8px"> <br>
+<!--        <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" style="color: red; margin-bottom: 8px"></div>-->
+
+        <input type="tel" name="phone" placeholder="Номер телефона" style="margin-bottom: 8px"> <br>
+<!--        <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" style="color: red; margin-bottom: 8px"></div>-->
+
+        <div style="margin-bottom: 8px">
+            <select name="namepost">
+                <div th:each="el : ${arrayListPost}">
+                    <option th:text="${el.namepost}"></option>
+                </div>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 8px">
+            <select name="amount">
+                <div th:each="el : ${arrayListCredit}">
+                    <option th:text="${el.amount} + ' срок погашения: ' + ${el.timeamount}"></option>
+                </div>
+            </select>
+        </div>
 
         <input type="submit" value="Создать"> <br>
     </form> <br>
     <a href="/employee" style="margin-left: 15px">Перейти к списку сотрудников</a>
+    <a href="/employee/post" style="margin-left: 15px">Создать должность</a>
+    <a href="/employee/credit" style="margin-left: 15px">Добавить задолженность</a>
 </body>
 </html>

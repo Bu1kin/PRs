@@ -22,11 +22,20 @@
 <div style="margin-left: 15px; margin-top: 15px">
     <div th:each="el : ${listEmployee}">
         <p th:text="${el.id}"/>
+        <div th:each="el1 : ${el.getPost()}">
+            <p th:text="${el1.getNamepost()}"/>
+        </div>
         <p th:text="${el.surname}"/>
         <p th:text="${el.name}"/>
         <p th:text="${el.middle_name}"/>
         <p th:text="${el.age}"/>
         <p th:text="${el.phone}" style="margin-bottom: 15px"/>
+        <div th:each="el1 : ${el.getCredit()}">
+            <p th:text="'Сумма: ' + ${el1.getAmount()} + ', срок погашения: ' + ${el1.getTimeamount()}"/>
+        </div>
+        <div th:each="el1 : ${el.getCars()}">
+            <p th:text="${el1.getBrand()} + ' ' + ${el1.getModel()}"/>
+        </div>
         <a th:href="'/employee/details/' + ${el.getId()}" class="btn btn-info" style="margin-bottom: 15px">Узнать детали</a>
     </div>
 </div>
