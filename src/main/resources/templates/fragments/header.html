@@ -9,11 +9,16 @@
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="/car" class="nav-link px-2 text-white">Таблица машин</a></li>
           <li><a href="/employee" class="nav-link px-2 text-white">Таблица сотрудников</a></li>
+          <li><a href="/user" class="nav-link px-2 text-white">Таблица пользователей</a></li>
           <li></li>
           <li></li>
           <li><a href="/car/add" class="nav-link px-2 text-secondary">Добавить машину</a></li>
           <li><a href="/employee/add" class="nav-link px-2 text-secondary">Добавить сотрудника</a></li>
+          <li><a href="/employee/employeeCarAdd" class="nav-link px-2 text-secondary">Добавить сотрудник-автомобиль</a></li>
         </ul>
+        <form style="alignment: right" th:action="@{/logout}" method="post">
+          <input type="submit" value="Sign Out"/>
+        </form>
       </div>
     </div>
   </header>

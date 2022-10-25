@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Практическая работа №1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <div th:insert="fragments/header :: headerMain"></div>
 </head>
 <body>
+<div style="margin-left: 15px">
+    <label>Get</label>
 
-<label>Get</label>
+    <form action="/main/" method="get">
+      <input type="text" name="zn1" placeholder="Число 1">
+      <input type="text" name="v" placeholder="Действие">
+      <input type="text" name="zn2" placeholder="Число 2">
+      <input type="submit" value="Узнать ответ">
+    </form>
 
-<form action="/main/" method="get">
-  <input type="text" name="zn1" placeholder="Число 1">
-  <input type="text" name="v" placeholder="Действие">
-  <input type="text" name="zn2" placeholder="Число 2">
-  <input type="submit" value="Узнать ответ">
-</form>
+    <label>Post</label>
 
-<label>Post</label>
-
-<form action="/main/" method="post">
-  <input type="text" name="zn1" placeholder="Число 1">
-  <input type="text" name="v" placeholder="Действие">
-  <input type="text" name="zn2" placeholder="Число 2">
-  <input type="submit" value="Узнать ответ">
-</form>
-
+    <form action="/main/" method="post">
+      <input type="text" name="zn1" placeholder="Число 1">
+      <input type="text" name="v" placeholder="Действие">
+      <input type="text" name="zn2" placeholder="Число 2">
+      <input type="submit" value="Узнать ответ">
+    </form>
+</div>
 </body>
 </html>
